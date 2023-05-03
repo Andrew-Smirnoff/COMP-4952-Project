@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-center mt-3">
+        
+		<div id="map" class="card border-0 map p-2" ></div>
+        <script>
+            let map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById("map"), {
+                    center: { lat: @Model[0].Latitude, lng: @Model[0].Longitude },
+                    zoom: 12
+                });
+                const marker = new google.maps.Marker({
+                    position: { lat:@Model[0].Latitude, lng: @Model[0].Longitude },
+            map: map,
+        });
+    }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAW4970f3wiEpL6q7LcyW-z7pgH7fq6c94&callback=initMap&v=weekly"
+                defer>
+        </script>
+        <div>
+            <div class="card border-0 border-radius-sm p-2 search">
+                <form action="#">
+                    <input type="text"
+                           placeholder=" Search Dooter..."
+                           name="search">
+                    <button>
+                        <h4>Search</h4>
+                    </button>
+                </form>
+            </div>
+            <button class="add-spot">
+                <a asp-controller="Functionality" asp-action="AddLocation" style="color: inherit; text-decoration: none">
+                    <h4>Add Spot</h4>
+                </a>
+            </button>
+            <ul>
+                @foreach (var location in Model)
+                {
+                    <a asp-area="" style="color: inherit" asp-controller="Home" asp-action="Location_Information" asp-route-id="@location.LocationID">
+                        <li class="card card-custom border-0 border-radius-sm card-location p-2">
+                            <div>
+                                <h3 class="card-location-content">@location.Name</h3>
+                                <h3 class="location-rating">@location.Rating</h3>
+                            </div>
+                        </li>
+                    </a>
+                }
+            </ul>
+
+            @*<ul>
+                <li class="card card-custom border-0 border-radius-sm card-location p-2">
+                    <div>
+                        <h3 class="card-location-content">Gothic Tree Between Cemetary </h3>
+                        <h3 class="location-rating">3.5</h3>
+                    </div>
+                </li>
+                <li class="card card-custom border-0 border-radius-sm card-location p-2">
+                    <div>
+                        <h3 class="card-location-content">Gothic Tree Between Cemetary </h3>
+                        <h3 class="location-rating">3.5</h3>
+                    </div>
+                </li>
+                <li class="card card-custom border-0 border-radius-sm card-location p-2">
+                    <div>
+                        <h3 class="card-location-content">Gothic Tree Between Cemetary </h3>
+                        <h3 class="location-rating">3.5</h3>
+                    </div>
+                </li>
+                <li class="card card-custom border-0 border-radius-sm card-location p-2">
+                    <div>
+                        <h3 class="card-location-content">Gothic Tree Between Cemetary </h3>
+                        <h3 class="location-rating">3.5</h3>
+                    </div>
+                </li>
+            </ul>*@
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Bookmarks";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-center mt-3">
+        <div id="map" class="card border-0 map p-2"></div>
+        <script>
+            let map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById("map"), {
+                    center: { lat: @Model[0].Latitude, lng: @Model[0].Longitude },
+                    zoom: 12
+                });
+                const marker = new google.maps.Marker({
+                    position: { lat:@Model[0].Latitude, lng: @Model[0].Longitude },
+            map: map,
+        });
+    }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAW4970f3wiEpL6q7LcyW-z7pgH7fq6c94&callback=initMap&v=weekly"
+                defer>
+        </script>
+        <div>
+            <div class="card border-0 border-radius-sm p-2 search">
+                <form action="#">
+                    <input type="text"
+                           placeholder=" Search Bookmarks..."
+                           name="search">
+                    <button>
+                        <h4>Search</h4>
+                    </button>
+                </form>
+            </div>
+            <ul>
+                @foreach (var bookmark in Model)
+                {
+                    <li class="card card-custom border-0 border-radius-sm card-bookmark p-2">
+                        <div>
+                            <h3 class="card-location-content">@bookmark.Name</h3>
+                            <button class="location-rating">Delete</button>
+                        </div>
+                        <h3>@bookmark.Rating</h3>
+                    </li>
+                }
+            </ul>
+            @*<ul>
+                <li class="card card-custom border-0 border-radius-sm card-bookmark p-2">
+                    <div>
+                        <h3 class="card-location-content">Gothic Tree Between Cemetary </h3>
+                        <button class="location-rating">Delete</button>
+                    </div>
+                    <h3>3.5</h3>
+                </li>
+                <li class="card card-custom border-0 border-radius-sm card-bookmark p-2">
+                    <div>
+                        <h3 class="card-location-content">Gothic Tree Between Cemetary </h3>
+                        <button class="location-rating">Delete</button>
+                    </div>
+                    <h3>3.5</h3>
+                </li>
+                <li class="card card-custom border-0 border-radius-sm card-bookmark p-2">
+                    <div>
+                        <h3 class="card-location-content">Gothic Tree Between Cemetary </h3>
+                        <button class="location-rating">Delete</button>
+                    </div>
+                    <h3>3.5</h3>
+                </li>
+                <li class="card card-custom border-0 border-radius-sm card-bookmark p-2">
+                    <div>
+                        <h3 class="card-location-content">Gothic Tree Between Cemetary </h3>
+                        <button class="location-rating">Delete</button>
+                    </div>
+                    <h3>3.5</h3>
+                </li>
+            </ul>*@
+        </div>
+    </div>
+</div>

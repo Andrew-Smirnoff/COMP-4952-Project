@@ -1,0 +1,46 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form class="container" asp-action="Login">
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <div class="card card-custom border-0 border-radius-sm card-login p-4">
+            <div class="d-flex justify-content-center align-items-center mb-lg-4 border-bottom border-3">
+                <h1 class="mb-lg-4">Dooter</h1>
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Username</label>
+                <input type="text" asp-for="Username" class="form-control" placeholder="name@example.com" />
+                <div class="col">
+                    <span asp-validation-for="Username"
+                          class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Password</label>
+                <input type="password" asp-for="Password" class="form-control" placeholder="••••••" />
+                <div class="col">
+                    <span asp-validation-for="Password"
+                          class="text-danger"></span>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between">
+                <div class="form-check pb-4">
+                    <input asp-for="RememberMe" class="form-check-input check-custom" type="checkbox" value="" id="flexCheckDefault">
+                    <label asp-for="RememberMe" class="form-check-label" for="flexCheckDefault">
+                        Remember me
+                    </label>
+                </div>
+                <div><a class="link-danger" href="#">Forgot Password?</a></div>
+            </div>
+
+            <button type="submit" class="btn btn-custom btn-danger p-0">Sign in</button>
+            <a asp-action="Register" class="text-center no-acc-text link-danger mt-2">Don't have an account? Register here</a>
+        </div>
+    </div>
+</form>

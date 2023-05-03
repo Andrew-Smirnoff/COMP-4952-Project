@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Dooter</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/forms.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-color py-1">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white fs-2" href="#">Dooter</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="navbar-nav">
+                        <li class="nav-item mx-3">
+                            @*<a href="#" class="nav-link text-secondary"> text-secondary is if we want this greyed out*@
+                            <a class="nav-link active text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                                @*aria-current="page"*@
+                                <svg class="bi d-block mx-auto mb-1" width="40" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                    <!--! Font Awesome Pro 6.2.0 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z" />
+                                </svg>
+                                Home @*TODO: maybe change to something more appropriate*@
+                            </a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Bookmarks">
+                                <svg class="bi d-block mx-auto mb-1" width="40" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                        <!--! Font Awesome Pro 6.2.0 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                        <path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z" />
+                                </svg>
+                                Bookmarks
+                                </a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Profile">
+                                <svg class="bi d-block mx-auto mb-1" width="40" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <!--! Font Awesome Pro 6.2.0 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                                </svg>
+                                Profile
+                            </a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="navbar-nav">
+                        <li class="nav-item mx-3">
+                            <a asp-action="Login" asp-controller="Account" asp-area="" class="nav-link text-white">
+                                <span class="fas fa-edit"></span>&nbsp;Log In
+                            </a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a asp-action="Register" asp-controller="Account" asp-area="" class="nav-link text-white">
+                                <span class="fas fa-edit"></span>&nbsp;Register
+                            </a>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main role="main" @*class="pb-3"*@>
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

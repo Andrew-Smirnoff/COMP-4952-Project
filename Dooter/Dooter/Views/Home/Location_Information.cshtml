@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Location_Information";
+}
+@model Location
+<head><script src="https://kit.fontawesome.com/cf1f826e4b.js" crossorigin="anonymous"></script></head>
+
+<div class="row row-cols-2 g-3">
+
+    <!-- Profile picture and description card -->
+
+    <div class="col">
+        <br>
+        <div class="card">
+
+            <img src="https://cdn.pixabay.com/photo/2022/09/20/20/16/oak-7468708_1280.jpg" class="card-img-top"
+                 alt="user profile picture" height="300" />
+
+            <div class="card-body">
+                
+                <h4 class="card-title">@Model.Name<span style="float:right"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star">3.0</i></span></h4>
+                
+                <br>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <h5 style="float: right">+ Add a review</h5>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fa-solid fa-user"></i>  User  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"> 5.0</i>
+                </h5>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fa-solid fa-user"></i>  User <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"> 4.0</i>
+                </h5>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fa-solid fa-user"></i>  User  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"> 3.0</i>
+                </h5>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Map -->
+    
+    <div class="col">
+        <div id="map" style="height:830px; width:auto;margin-top: 25px;"></div>
+        <script>
+            let map;
+            function initMap(){
+                map = new google.maps.Map(document.getElementById("map"),{
+                    center: { lat: @Model.Latitude, lng: @Model.Latitude },
+                    zoom: 12
+                });
+                const marker = new google.maps.Marker({
+                    position: { lat: @Model.Latitude, lng: @Model.Latitude },
+                    map: map,
+                });
+
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAW4970f3wiEpL6q7LcyW-z7pgH7fq6c94&callback=initMap&v=weekly"
+				defer> 
+		</script>
+        <br><br><br>
+    </div>
+
+    
+
+
+
+
+
+</div>
